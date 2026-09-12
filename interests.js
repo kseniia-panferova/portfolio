@@ -13,10 +13,8 @@
 // medium   — one interest becomes a form of representation for another
 
 const interests = [
-  {
-    id: "landscape-systems",
+  {id: "landscape-systems",
     title: "landscape systems",
-    description: "Territories as layered ecological, cultural and infrastructural systems.",
     x: 18,
     y: 28,
     size: "large",
@@ -49,10 +47,8 @@ const interests = [
     ]
   },
 
-  {
-    id: "mapping",
+  {id: "mapping",
     title: "mapping / counter-mapping",
-    description: "Drawing as a way to read space, reveal hidden relations and build spatial arguments.",
     x: 42,
     y: 18,
     size: "medium",
@@ -80,8 +76,7 @@ const interests = [
     ]
   },
 
-  {
-    id: "archive-memory",
+  {id: "archive-memory",
     title: "archive / memory",
     description: "Traces, fragments, documents and remembered forms as material for spatial research.",
     x: 70,
@@ -116,8 +111,7 @@ const interests = [
     ]
   },
 
-  {
-    id: "post-industrial",
+  {id: "post-industrial",
     title: "post-industrial landscapes",
     description: "Ruins, exhausted territories, production afterlives and ambiguous urban edges.",
     x: 30,
@@ -152,8 +146,7 @@ const interests = [
     ]
   },
 
-  {
-    id: "infrastructure",
+  { id: "infrastructure",
     title: "infrastructure",
     description: "Visible and invisible systems that organize everyday space.",
     x: 56,
@@ -182,8 +175,7 @@ const interests = [
     ]
   },
 
-  {
-    id: "exhibition",
+  { id: "exhibition",
     title: "exhibition as medium",
     description: "Exhibition, model and display as tools for producing spatial narratives.",
     x: 80,
@@ -213,8 +205,7 @@ const interests = [
     ]
   },
 
-  {
-    id: "public-space",
+  {id: "public-space",
     title: "public space",
     description: "Shared environments, urban rituals, accessibility and everyday negotiations.",
     x: 22,
@@ -243,8 +234,7 @@ const interests = [
     ]
   },
 
-  {
-    id: "ecology",
+  {id: "ecology",
     title: "ecological thinking",
     description: "Design processes that begin with observation, care, adaptation and long-term relations.",
     x: 52,
@@ -273,8 +263,7 @@ const interests = [
     ]
   },
 
-  {
-    id: "fiction",
+  {id: "fiction",
     title: "spatial fiction",
     description: "Imagined institutions, speculative scenarios and alternative spatial realities.",
     x: 76,
