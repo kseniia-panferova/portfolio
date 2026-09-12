@@ -64,6 +64,11 @@ button { font: inherit; }
   padding-top: 4px;
 }
 
+.view-switcher {
+  display: flex;
+  gap: 18px;
+}
+
 .site-nav a {
   font-size: 18px;
   font-weight: 450;
@@ -423,7 +428,11 @@ button { font: inherit; }
   border-color: rgba(255, 255, 255, 0.35);
 }
 
-.project-page { width: 100%; margin: 0; padding: 0; }
+.project-page {
+  width: 100%;
+  margin: 0;
+  padding: 60px 0 0;
+}
 
 .project-images {
   width: 100%;
@@ -552,6 +561,10 @@ button { font: inherit; }
     width: 100%;
     max-width: 100%;
     height: auto;
+  }
+
+  .project-page {
+    padding-top: 54px;
   }
 
   .project-meta { margin-top: 8px; }

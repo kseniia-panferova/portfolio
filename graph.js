@@ -219,12 +219,11 @@ function renderProjects(interest) {
   const relatedProjects = getProjectList(interest);
 
   if (!relatedProjects.length) {
-    return `<p class="panel-note">No linked projects yet. Add project slugs in interests.js.</p>`;
+    return `<p class="panel-note">No linked projects yet.</p>`;
   }
 
   return relatedProjects.map((project) => `
     <a class="panel-project" href="${projectUrl(project.slug)}">
-      <span class="panel-project-year">${escapeHTML(project.year)}</span>
       <span class="panel-project-title">${escapeHTML(project.title)}</span>
     </a>
   `).join("");
@@ -270,27 +269,10 @@ function selectInterest(id) {
   setActiveGraphState(id);
 
   panelRoot.innerHTML = `
-    <div class="panel-kicker">current interest</div>
-    <h2>${escapeHTML(interest.title)}</h2>
-    <p>${escapeHTML(interest.description || "")}</p>
-
-    <div class="panel-connections">
-      <h3>Connected interests</h3>
-      ${renderConnections(interest)}
-    </div>
-
     <div class="panel-projects">
-      <h3>Related projects</h3>
       ${renderProjects(interest)}
     </div>
   `;
-
-  panelRoot.querySelectorAll("[data-select-interest]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      selectInterest(button.dataset.selectInterest);
-    });
-  });
 
   positionPanelNearInterest(interest);
 }

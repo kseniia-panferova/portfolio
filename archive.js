@@ -8,7 +8,7 @@ const projectTypeLabels = {
   W: "Work / professional"
 };
 
-const projectTypeOrder = ["A", "S", "C", "W"];
+const projectTypeOrder = ["W", "C", "S", "A"];
 
 function projectUrl(slug) {
   return `../projects/${encodeURI(slug)}/?from=archive`;
