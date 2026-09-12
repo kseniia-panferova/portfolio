@@ -284,6 +284,149 @@ function renderNodes() {
   projectData.forEach((project) => nodesRoot.appendChild(createProjectNode(project)));
 }
 
+
+function applyProjectPositions() {
+  document.querySelectorAll(".project-node").forEach((node) => {
+    const position = projectPositions.get(node.dataset.projectSlug);
+    if (!position) return;
+    node.style.setProperty("--x", `${position.x}%`);
+    node.style.setProperty("--y", `${position.y}%`);
+  });
+}
+
+function getCollisionPush(a, b, gap) {
+  const overlapX = (a.width + b.width) / 2 + gap - Math.abs(a.x - b.x);
+  const overlapY = (a.height + b.height) / 2 + gap - Math.abs(a.y - b.y);
+
+  if (overlapX <= 0 || overlapY <= 0) return null;
+
+  // Resolve along the axis that requires the smaller movement. This keeps
+  // labels close to their semantic / averaged position instead of scattering them.
+  if (overlapX < overlapY) {
+    let direction = Math.sign(a.x - b.x);
+    if (!direction) direction = hashString(`${a.key}__${b.key}`) % 2 ? 1 : -1;
+    return { x: direction * (overlapX + 0.5), y: 0 };
+  }
+
+  let direction = Math.sign(a.y - b.y);
+  if (!direction) direction = hashString(`${a.key}__${b.key}__y`) % 2 ? 1 : -1;
+  return { x: 0, y: direction * (overlapY + 0.5) };
+}
+
+function keepInsideGraph(point, width, height, edgePadding) {
+  const minX = point.width / 2 + edgePadding;
+  const maxX = width - point.width / 2 - edgePadding;
+  const minY = point.height / 2 + edgePadding;
+  const maxY = height - point.height / 2 - edgePadding;
+
+  point.x = clamp(point.x, minX, Math.max(minX, maxX));
+  point.y = clamp(point.y, minY, Math.max(minY, maxY));
+}
+
+function resolveNodeCollisions() {
+  if (!graphRoot) return;
+
+  const graphRect = graphRoot.getBoundingClientRect();
+  if (!graphRect.width || !graphRect.height) return;
+
+  // Smaller screens need a slightly tighter packing, but labels still receive
+  // a real buffer rather than being allowed to touch.
+  const gap = graphRect.width <= 640 ? 7 : 11;
+  const edgePadding = graphRect.width <= 640 ? 6 : 10;
+
+  // Interests are deliberate manual anchors. We never move them here; project
+  // labels flow around their actual rendered bounding boxes.
+  const fixedInterests = [...document.querySelectorAll(".interest-node")].map((node) => {
+    const rect = node.getBoundingClientRect();
+    return {
+      key: `interest:${node.dataset.interestId}`,
+      x: rect.left - graphRect.left + rect.width / 2,
+      y: rect.top - graphRect.top + rect.height / 2,
+      width: rect.width,
+      height: rect.height
+    };
+  });
+
+  const movableProjects = [...document.querySelectorAll(".project-node")].map((node) => {
+    const rect = node.getBoundingClientRect();
+    const slug = node.dataset.projectSlug;
+    const position = projectPositions.get(slug) || { x: 50, y: 50 };
+    const anchorX = (position.x / 100) * graphRect.width;
+    const anchorY = (position.y / 100) * graphRect.height;
+
+    return {
+      key: `project:${slug}`,
+      slug,
+      node,
+      x: anchorX,
+      y: anchorY,
+      anchorX,
+      anchorY,
+      width: rect.width,
+      height: rect.height
+    };
+  });
+
+  // Iterative rectangle relaxation: projects repel both tags and one another,
+  // while a very gentle pull keeps each project near the average of its tags.
+  for (let iteration = 0; iteration < 90; iteration += 1) {
+    let largestMove = 0;
+
+    movableProjects.forEach((project) => {
+      const pull = iteration < 20 ? 0.010 : 0.004;
+      const dx = (project.anchorX - project.x) * pull;
+      const dy = (project.anchorY - project.y) * pull;
+      project.x += dx;
+      project.y += dy;
+      largestMove = Math.max(largestMove, Math.abs(dx), Math.abs(dy));
+
+      fixedInterests.forEach((interest) => {
+        const push = getCollisionPush(project, interest, gap);
+        if (!push) return;
+        project.x += push.x;
+        project.y += push.y;
+        largestMove = Math.max(largestMove, Math.abs(push.x), Math.abs(push.y));
+      });
+
+      keepInsideGraph(project, graphRect.width, graphRect.height, edgePadding);
+    });
+
+    for (let i = 0; i < movableProjects.length; i += 1) {
+      for (let j = i + 1; j < movableProjects.length; j += 1) {
+        const a = movableProjects[i];
+        const b = movableProjects[j];
+        const push = getCollisionPush(a, b, gap);
+        if (!push) continue;
+
+        // Both project nodes are movable, so share the displacement equally.
+        a.x += push.x / 2;
+        a.y += push.y / 2;
+        b.x -= push.x / 2;
+        b.y -= push.y / 2;
+
+        keepInsideGraph(a, graphRect.width, graphRect.height, edgePadding);
+        keepInsideGraph(b, graphRect.width, graphRect.height, edgePadding);
+        largestMove = Math.max(largestMove, Math.abs(push.x / 2), Math.abs(push.y / 2));
+      }
+    }
+
+    if (iteration > 18 && largestMove < 0.12) break;
+  }
+
+  movableProjects.forEach((project) => {
+    const position = {
+      x: (project.x / graphRect.width) * 100,
+      y: (project.y / graphRect.height) * 100
+    };
+    projectPositions.set(project.slug, position);
+    project.node.style.setProperty("--x", `${position.x}%`);
+    project.node.style.setProperty("--y", `${position.y}%`);
+  });
+
+  // Lines must terminate at the final de-collided project positions.
+  drawLines();
+}
+
 function clearGraphHighlight() {
   document.querySelectorAll(".interest-node, .project-node").forEach((node) => {
     node.classList.remove("is-active", "is-linked", "is-dimmed");
@@ -429,15 +572,38 @@ function initGraph() {
   }
 
   calculateProjectPositions();
-  drawLines();
   renderNodes();
+  drawLines();
+
+  // DOM measurements are needed because a long tag occupies more space than a
+  // short one. Resolve once after the first layout, then again after web fonts load.
+  requestAnimationFrame(() => resolveNodeCollisions());
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(() => {
+      calculateProjectPositions();
+      applyProjectPositions();
+      requestAnimationFrame(() => resolveNodeCollisions());
+    });
+  }
 
   graphRoot.addEventListener("click", () => hidePanel());
 
+  let resizeTimer = null;
   window.addEventListener("resize", () => {
-    if (!selectedInterestId) return;
-    const interest = interestById.get(selectedInterestId);
-    if (interest) positionPanelNearInterest(interest);
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(() => {
+      calculateProjectPositions();
+      applyProjectPositions();
+
+      requestAnimationFrame(() => {
+        resolveNodeCollisions();
+
+        if (!selectedInterestId) return;
+        const interest = interestById.get(selectedInterestId);
+        if (interest) positionPanelNearInterest(interest);
+      });
+    }, 90);
   });
 }
 
