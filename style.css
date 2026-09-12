@@ -393,6 +393,34 @@ button { font: inherit; }
   line-height: 1.15;
 }
 
+.other-work {
+  padding: 28px 20px 56px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.other-work-title {
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.other-work-links {
+  display: flex;
+  gap: 24px;
+}
+
+.other-work-links a {
+  font-size: 18px;
+  opacity: 0.72;
+}
+
+.other-work-links a:hover {
+  opacity: 1;
+}
+
 /* ========================= PROJECT PAGE ========================= */
 
 .project-header {
