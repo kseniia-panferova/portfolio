@@ -17,33 +17,10 @@ const interests = [
     title: "landscape systems",
     x: 18,
     y: 28,
-    size: "large",
-    links: [
-      {
-        target: "mapping",
-        type: "method",
-        label: "mapping makes territorial systems readable without reducing them to one layer"
-      },
-      {
-        target: "ecology",
-        type: "context",
-        label: "ecological thinking shifts the project from an object to a set of long-term relations"
-      },
-      {
-        target: "public-space",
-        type: "scale",
-        label: "landscape systems become political when they meet everyday public use"
-      },
-      {
-        target: "post-industrial",
-        type: "tension",
-        label: "damaged industrial territories reveal the conflict between production, ecology and care"
-      }
-    ],
+    size: "medium",
     projectSlugs: [
-      "2021_A_Rybinskoye Reservoir",
-      "2022_C_Devinska_Kobyla",
-      "2024_S_Factory_Reset"
+      "2025_C_Borderless",
+      "2023_С_Last_Glow"
     ]
   },
 
@@ -52,214 +29,77 @@ const interests = [
     x: 42,
     y: 18,
     size: "medium",
-    links: [
-      {
-        target: "archive-memory",
-        type: "method",
-        label: "mapping organizes fragments, traces and documents into spatial arguments"
-      },
-      {
-        target: "infrastructure",
-        type: "method",
-        label: "maps can expose systems that are present in space but not immediately visible"
-      },
-      {
-        target: "landscape-systems",
-        type: "method",
-        label: "mapping helps move between detail, route, territory and landscape"
-      }
-    ],
     projectSlugs: [
-      "2024_S_Factory_Reset",
-      "2021_W_Pavlovskaya_27",
-      "2020_W_Varshavskoye_Highway_141"
+      "2021_A_Rybinskoye Reservoir",
+      "2023_С_Last_Glow"
     ]
   },
 
   {id: "archive-memory",
     title: "archive / memory",
-    description: "Traces, fragments, documents and remembered forms as material for spatial research.",
     x: 70,
     y: 30,
     size: "large",
-    links: [
-      {
-        target: "post-industrial",
-        type: "material",
-        label: "post-industrial sites can be read as physical archives of former production"
-      },
-      {
-        target: "exhibition",
-        type: "medium",
-        label: "archive becomes spatial when it is arranged, displayed and walked through"
-      },
-      {
-        target: "fiction",
-        type: "tension",
-        label: "memory is never fully stable, so archival fragments can also produce fictional structures"
-      },
-      {
-        target: "mapping",
-        type: "method",
-        label: "counter-mapping can connect partial memories into a territorial reading"
-      }
-    ],
     projectSlugs: [
-      "2023_A_Factory_of_Nothing_Tapes",
-      "2023_A_No_Soup_Exhibition",
-      "2023_С_Last_Glow"
+      "2023_С_Last_Glow",
+      "2021_A_Rybinskoye Reservoir",
+      "2022_C_Devinska_Kobyla",
+      "2017_S_Navi_Pavilion"
     ]
   },
 
   {id: "post-industrial",
     title: "post-industrial landscapes",
-    description: "Ruins, exhausted territories, production afterlives and ambiguous urban edges.",
     x: 30,
     y: 55,
-    size: "large",
-    links: [
-      {
-        target: "infrastructure",
-        type: "context",
-        label: "industrial remains often expose the infrastructures that shaped the city around them"
-      },
-      {
-        target: "archive-memory",
-        type: "material",
-        label: "ruins keep traces of work, extraction, abandonment and transformation"
-      },
-      {
-        target: "landscape-systems",
-        type: "scale",
-        label: "a post-industrial site is not isolated; it belongs to larger territorial and ecological systems"
-      },
-      {
-        target: "public-space",
-        type: "tension",
-        label: "abandoned or transformed production zones raise questions about access and collective use"
-      }
-    ],
+    size: "small",
     projectSlugs: [
-      "2021_W_Pavlovskaya_27",
-      "2020_W_Varshavskoye_Highway_141",
       "2024_S_Factory_Reset"
     ]
   },
 
   { id: "infrastructure",
     title: "infrastructure",
-    description: "Visible and invisible systems that organize everyday space.",
     x: 56,
     y: 57,
     size: "medium",
-    links: [
-      {
-        target: "mapping",
-        type: "method",
-        label: "infrastructure often needs to be mapped before it can be critically understood"
-      },
-      {
-        target: "public-space",
-        type: "context",
-        label: "public space is shaped by systems of movement, maintenance, access and control"
-      },
-      {
-        target: "post-industrial",
-        type: "context",
-        label: "post-industrial landscapes are usually made from obsolete or transformed infrastructures"
-      }
-    ],
     projectSlugs: [
-      "2020_W_Varshavskoye_Highway_141",
-      "2024_S_Factory_Reset"
+      "2023_С_Last_Glow"
     ]
   },
 
   { id: "exhibition",
     title: "exhibition as medium",
-    description: "Exhibition, model and display as tools for producing spatial narratives.",
     x: 80,
     y: 62,
     size: "medium",
-    links: [
-      {
-        target: "archive-memory",
-        type: "medium",
-        label: "exhibition turns archived fragments into a sequence, atmosphere and spatial argument"
-      },
-      {
-        target: "fiction",
-        type: "medium",
-        label: "display can make a fictional institution or speculative world temporarily believable"
-      },
-      {
-        target: "mapping",
-        type: "method",
-        label: "exhibition can work as a map: it selects, orders and connects evidence"
-      }
-    ],
     projectSlugs: [
       "2024_A_Exhibition_Model",
       "2023_A_No_Soup_Exhibition",
-      "2023_A_Factory_of_Nothing_Tapes"
+      "2023_A_Factory_of_Nothing_Tapes",
+      "2021_A_Rybinskoye Reservoir"
     ]
   },
 
   {id: "public-space",
     title: "public space",
-    description: "Shared environments, urban rituals, accessibility and everyday negotiations.",
     x: 22,
     y: 78,
     size: "medium",
-    links: [
-      {
-        target: "landscape-systems",
-        type: "scale",
-        label: "public space is one of the scales where larger landscape systems become experienced"
-      },
-      {
-        target: "infrastructure",
-        type: "context",
-        label: "public life depends on infrastructural conditions that are often treated as background"
-      },
-      {
-        target: "ecology",
-        type: "context",
-        label: "ecological thinking changes how public space is maintained, shared and cared for"
-      }
-    ],
     projectSlugs: [
-      "2017_S_Navi_Pavilion",
-      "2021_W_Pavlovskaya_27"
+      "2024_S_Factory_Reset",
+      "2022_C_Devinska_Kobyla",
+      "2023_A_No_Soup_Exhibition"
     ]
   },
 
   {id: "ecology",
     title: "ecological thinking",
-    description: "Design processes that begin with observation, care, adaptation and long-term relations.",
     x: 52,
     y: 82,
     size: "large",
-    links: [
-      {
-        target: "landscape-systems",
-        type: "context",
-        label: "ecology treats landscape as a set of relations rather than a neutral background"
-      },
-      {
-        target: "public-space",
-        type: "context",
-        label: "shared space can become a place where ecological care is practiced collectively"
-      },
-      {
-        target: "post-industrial",
-        type: "tension",
-        label: "ecology becomes sharper when it meets damaged, exhausted or contaminated territories"
-      }
-    ],
     projectSlugs: [
-      "2021_A_Rybinskoye Reservoir",
-      "2022_C_Devinska_Kobyla"
+      "2025_C_Borderless"
     ]
   },
 
@@ -267,22 +107,21 @@ const interests = [
     title: "landscape",
     x: 76,
     y: 84,
-    size: "small",
-    links: [
-      {
-        target: "exhibition",
-        type: "medium",
-        label: "exhibition can temporarily materialize a fictional spatial system"
-      },
-      {
-        target: "archive-memory",
-        type: "tension",
-        label: "fiction appears where memory, evidence and speculation begin to overlap"
-      }
-    ],
+    size: "large",
     projectSlugs: [
-      "2023_A_No_Soup_Exhibition",
-      "2023_A_Factory_of_Nothing_Tapes"
+      "2025_C_Borderless"
+    ]
+  }
+
+    {id: "architecture",
+    title: "architecture",
+    x: 76,
+    y: 84,
+    size: "large",
+    projectSlugs: [
+      "2017_S_Navi_Pavilion",
+      "2021_W_Pavlovskaya_27",
+      "2020_W_Varshavskoye_Highway_141"
     ]
   }
 ];
