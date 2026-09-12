@@ -1,0 +1,183 @@
+/* ================================================================
+   MAP EXPERIMENT: interests + project nodes
+   Load this file AFTER style.css.
+   Removing this file restores the base visual styling.
+   ================================================================ */
+
+/* Compact intro + larger graph field */
+.interest-page {
+  padding: 0 20px 20px;
+}
+
+.interest-intro {
+  max-width: 520px;
+  margin: 12px 0 10px;
+}
+
+.interest-intro p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.interest-layout,
+.interest-graph {
+  min-height: clamp(680px, calc(100vh - 125px), 960px);
+}
+
+/* Existing interest-to-interest relations recede into the background. */
+.graph-line--interest {
+  stroke: rgba(255, 255, 255, 0.13);
+  stroke-width: 0.075;
+  opacity: 0.22;
+}
+
+/* Project relationships become the main network layer. */
+.graph-line--project {
+  stroke: rgba(255, 255, 255, 0.23);
+  stroke-width: 0.085;
+  opacity: 0.50;
+}
+
+.graph-line--interest.is-active {
+  stroke: rgba(255, 255, 255, 0.42);
+  stroke-width: 0.11;
+  opacity: 0.50;
+}
+
+.graph-line--project.is-active {
+  stroke: rgba(255, 255, 255, 0.82);
+  stroke-width: 0.15;
+  opacity: 0.95;
+}
+
+.graph-line.is-dimmed {
+  opacity: 0.06;
+}
+
+/* Project nodes: quieter than interest nodes, but always visible. */
+.project-node {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.012em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+}
+
+.project-node::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+  transition: width 0.18s ease, height 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.project-node-label {
+  display: block;
+  white-space: nowrap;
+}
+
+.project-node:hover,
+.project-node.is-active {
+  z-index: 8;
+  color: rgba(255, 255, 255, 1);
+}
+
+.project-node:hover::before,
+.project-node.is-active::before {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.28);
+}
+
+.project-node.is-linked {
+  z-index: 6;
+  color: rgba(255, 255, 255, 0.83);
+}
+
+.project-node.is-linked::before {
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.18);
+}
+
+.project-node.is-dimmed {
+  opacity: 0.18;
+}
+
+.interest-node.is-dimmed {
+  opacity: 0.30;
+}
+
+/* When a project is hovered, all of its tags become clearly visible. */
+.interest-node.is-linked {
+  z-index: 7;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.interest-node.is-linked::before {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.22);
+}
+
+@media (max-width: 900px) {
+  .interest-layout,
+  .interest-graph {
+    min-height: 720px;
+  }
+
+  .project-node {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .interest-page {
+    padding: 0 16px 20px;
+  }
+
+  .interest-intro {
+    margin: 8px 0 8px;
+  }
+
+  .interest-intro p {
+    font-size: 11px;
+  }
+
+  .interest-layout,
+  .interest-graph {
+    min-height: 640px;
+  }
+
+  .project-node {
+    gap: 4px;
+    padding: 3px;
+    font-size: 9px;
+  }
+
+  .project-node::before {
+    width: 3px;
+    height: 3px;
+  }
+}

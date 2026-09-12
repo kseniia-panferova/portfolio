@@ -264,8 +264,7 @@ const interests = [
   },
 
   {id: "fiction",
-    title: "spatial fiction",
-    description: "Imagined institutions, speculative scenarios and alternative spatial realities.",
+    title: "landscape",
     x: 76,
     y: 84,
     size: "small",
