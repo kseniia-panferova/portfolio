@@ -105,18 +105,18 @@ const interests = [
 
   {id: "fiction",
     title: "landscape",
-    x: 76,
-    y: 84,
+    x: 72,
+    y: 78,
     size: "large",
     projectSlugs: [
       "2025_C_Borderless"
     ]
-  }
+  },
 
-    {id: "architecture",
+   {id: "architecture",
     title: "architecture",
-    x: 76,
-    y: 84,
+    x: 84,
+    y: 86,
     size: "large",
     projectSlugs: [
       "2017_S_Navi_Pavilion",
