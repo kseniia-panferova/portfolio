@@ -64,10 +64,6 @@ button { font: inherit; }
   padding-top: 4px;
 }
 
-.view-switcher {
-  display: flex;
-  gap: 18px;
-}
 
 .site-nav a {
   font-size: 18px;
@@ -339,15 +335,16 @@ button { font: inherit; }
 }
 
 .panel-project {
-  display: grid;
-  grid-template-columns: 44px minmax(0, 1fr);
-  gap: 10px;
+  display: block;
   padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.panel-project-year { font-size: 12px; color: rgba(255, 255, 255, 0.46); }
-.panel-project-title { font-size: 14px; line-height: 1.2; }
+.panel-project-title {
+  display: block;
+  font-size: 14px;
+  line-height: 1.2;
+}
 
 /* ========================= ARCHIVE / PROJECT GRID ========================= */
 
