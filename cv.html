@@ -14,117 +14,149 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <style>
-    /* Scoped CV styles so the page works without changing the rest of the site */
+    /*
+      CV styles are intentionally isolated from the old .cv-* rules
+      that still exist in style.css.
+    */
 
-    .cv {
-      width: min(760px, calc(100% - 48px));
+    body.cv-document .resume-page {
+      width: calc(100% - 40px);
+      max-width: 760px;
       margin: 0 auto;
-      padding: 56px 0 96px;
+      padding: 34px 0 88px;
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.52;
       font-weight: 400;
     }
 
-    .cv-header {
-      margin-bottom: 48px;
+    body.cv-document .resume-intro {
+      margin: 0 0 42px;
     }
 
-    .cv-header p {
+    body.cv-document .resume-intro p {
       margin: 0;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .cv-header p:first-child {
-      font-weight: 500;
-    }
-
-    .cv-header p + p {
-      margin-top: 2px;
-      opacity: 0.55;
-    }
-
-    .cv-section {
-      margin: 0 0 52px;
-    }
-
-    .cv-section h2 {
-      margin: 0 0 24px;
       font-size: 13px;
-      line-height: 1.3;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      line-height: 1.45;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.58);
     }
 
-    .cv-entry {
-      margin: 0 0 28px;
+    body.cv-document .resume-intro p:first-child {
+      color: rgba(255, 255, 255, 0.84);
     }
 
-    .cv-entry:last-child {
+    body.cv-document .resume-intro p + p {
+      margin-top: 2px;
+    }
+
+    body.cv-document .resume-section {
+      margin: 0 0 46px;
+    }
+
+    body.cv-document .resume-section:last-child {
       margin-bottom: 0;
     }
 
-    .cv-entry h3 {
-      margin: 0 0 3px;
-      font-size: 14px;
-      line-height: 1.45;
+    body.cv-document .resume-section-title {
+      margin: 0 0 19px;
+      font-size: 11px;
+      line-height: 1.3;
       font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.52);
     }
 
-    .cv-entry p {
+    body.cv-document .resume-profile {
+      max-width: 680px;
       margin: 0;
+      font-size: 14px;
+      line-height: 1.58;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.88);
     }
 
-    .cv-entry p + p {
+    body.cv-document .resume-entry {
+      margin: 0 0 25px;
+    }
+
+    body.cv-document .resume-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    body.cv-document .resume-entry-title {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.42;
+      font-weight: 450;
+      letter-spacing: 0;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    body.cv-document .resume-meta {
+      margin: 3px 0 8px;
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    body.cv-document .resume-text {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.56;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    body.cv-document .resume-text + .resume-text {
       margin-top: 8px;
     }
 
-    .cv-date,
-    .cv-meta {
-      margin-bottom: 8px !important;
-      font-size: 13px;
-      line-height: 1.45;
-      font-weight: 400;
-      opacity: 0.55;
+    /* Indent descriptive text under titled entries */
+    body.cv-document .resume-entry > .resume-entry-title ~ .resume-text {
+      margin-left: 18px;
+      max-width: calc(100% - 18px);
     }
 
-    .cv > .cv-section > p {
-      margin: 0;
-    }
-
-    .cv > .cv-section > p + p {
-      margin-top: 10px;
-    }
-
-    .cv em {
+    body.cv-document .resume-text em {
       font-style: italic;
     }
 
-    .cv-profile {
-      max-width: 680px;
+    body.cv-document .resume-label {
+      color: rgba(255, 255, 255, 0.58);
     }
 
-    @media (max-width: 700px) {
-      .cv {
+    @media (max-width: 640px) {
+      body.cv-document .resume-page {
         width: auto;
+        max-width: none;
         margin: 0;
-        padding: 36px 20px 72px;
-        font-size: 14px;
+        padding: 28px 16px 68px;
       }
 
-      .cv-section {
-        margin-bottom: 44px;
+      body.cv-document .resume-intro {
+        margin-bottom: 36px;
       }
 
-      .cv-entry {
-        margin-bottom: 24px;
+      body.cv-document .resume-section {
+        margin-bottom: 40px;
+      }
+
+      body.cv-document .resume-entry {
+        margin-bottom: 23px;
+      }
+
+      body.cv-document .resume-entry > .resume-entry-title ~ .resume-text {
+        margin-left: 12px;
+        max-width: calc(100% - 12px);
       }
     }
   </style>
 </head>
 
-<body class="home-page">
+<body class="home-page cv-document">
+
   <header class="site-header">
     <div class="site-header-inner">
       <div class="site-brand">
@@ -143,267 +175,251 @@
     </div>
   </header>
 
-  <main>
-    <section class="cv">
+  <main class="resume-page">
 
-      <header class="cv-header">
-        <p>Architect · Landscape Designer</p>
-        <p>Belgrade, Serbia</p>
-      </header>
+    <div class="resume-intro">
+      <p>Architect · Landscape Designer</p>
+      <p>Belgrade, Serbia</p>
+    </div>
 
-      <section class="cv-section">
-        <h2>Profile</h2>
-
-        <p class="cv-profile">
-          Architect based in Belgrade, working across landscape architecture,
-          public space, mapping and spatial research. My current practice combines
-          concept development for public parks in Abu Dhabi with research methods
-          including GIS, cartography, field observation and analytical drawing.
-          I am particularly interested in design processes that begin with a careful
-          reading of territory and translate complex spatial, ecological and social
-          conditions into clear strategies.
-        </p>
-      </section>
-
-      <section class="cv-section">
-        <h2>Professional Experience</h2>
-
-        <article class="cv-entry">
-          <h3>ArhinautM — Architectural / Landscape Designer</h3>
-          <p class="cv-date">February 2024–present</p>
-
-          <p>
-            Concept development and site analysis for approximately 30 public parks
-            in Abu Dhabi for the Department of Municipalities and Transport (DMT).
-            Preparation and presentation of design proposals, direct client
-            communication, participation in in-person meetings and project visits
-            in Abu Dhabi, and development of internal project workflows.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>DOMAIN Office — Research Analyst</h3>
-          <p class="cv-meta">Belgrade / Bor, Serbia · October 2024–December 2025</p>
-
-          <p>
-            Research on copper extraction, territorial transformation and planning
-            processes in Bor and Krivelj. Worked with cadastral and spatial-planning
-            data and developed analytical drawings and diagrams. Participated in
-            fieldwork, including community-based research in Krivelj involving
-            interviews, translation and local coordination, photographic
-            documentation, and exhibition and workshop production.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Gran Architectural Studio — Architectural Designer</h3>
-          <p class="cv-date">May–July 2021</p>
-
-          <p>
-            Development of a residential complex concept in the Danilovsky Market
-            area, Moscow, including territorial analysis, density calculations,
-            layout development and client coordination.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Buromoscow — Architectural Designer</h3>
-          <p class="cv-date">August 2019–January 2021</p>
-
-          <p>
-            Worked on urban design, public space, landscape and residential projects,
-            including competition proposals and detailed design documentation.
-          </p>
-        </article>
-      </section>
-
-      <section class="cv-section">
-        <h2>Selected Projects &amp; Research</h2>
-
-        <article class="cv-entry">
-          <h3>Borderless — Ada Zoo, Belgrade</h3>
-          <p class="cv-meta">Competition proposal with Polina Minina · 2025</p>
-
-          <p>
-            Co-developed the spatial concept and zoning strategy for the relocation
-            of Belgrade Zoo, exploring ways of reducing the visual presence of
-            enclosures and creating the perception of continuous animal habitats.
-            Exhibited at the 48th Salon of Architecture, Museum of Applied Art,
-            Belgrade, 2026.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>A City Without Borders: Administrative Boundaries and Spatial Identity in Belgrade</h3>
-          <p class="cv-meta">Master’s thesis, University of Belgrade · 2025</p>
-
-          <p>
-            Investigated the relationship between administrative boundaries,
-            built fabric and lived urban conditions in Belgrade. Combined GIS,
-            demographic and spatial data, satellite imagery and field observation
-            to examine spatial differences obscured by aggregated administrative
-            statistics.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Last Glow — Mapping Italian Coastal Watchtowers</h3>
-          <p class="cv-meta">Reuse Italy competition · 2023</p>
-
-          <p>
-            Created and geolocated a dataset of approximately 180 coastal
-            watchtowers and developed a Google Maps–QGIS workflow to analyse their
-            territorial distribution as part of the design research.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Contemporary Tombstones: Prototypes and Modes of Interpretation</h3>
-          <p class="cv-meta">Moscow Architectural Institute · 2022</p>
-
-          <p>
-            Field-based study of funerary architecture in Moscow and St Petersburg.
-            Developed a typology of recurring architectural prototypes and analysed
-            their transformations in contemporary memorial forms.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Reading the Urban Edge through Walking and Photography</h3>
-          <p class="cv-meta">Belgrade · 2026–ongoing</p>
-
-          <p>
-            Independent photographic fieldwork exploring urban peripheries,
-            terminal bus stops and transitional landscapes through walking,
-            route documentation and field notes.
-          </p>
-        </article>
-      </section>
-
-      <section class="cv-section">
-        <h2>Education</h2>
-
-        <article class="cv-entry">
-          <h3>University of Belgrade — Faculty of Architecture</h3>
-          <p class="cv-meta">Master of Architecture · 2023–2025</p>
-
-          <p>
-            Master’s thesis:
-            <em>A City Without Borders: Administrative Boundaries and Spatial Identity in Belgrade</em>
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Moscow Architectural Institute (State Academy)</h3>
-          <p class="cv-meta">Architecture · 2016–2022</p>
-
-          <p>
-            Thesis:
-            <em>Contemporary Tombstones: Prototypes and Modes of Interpretation</em>
-          </p>
-        </article>
-      </section>
-
-      <section class="cv-section">
-        <h2>Selected Exhibitions &amp; Awards</h2>
-
-        <article class="cv-entry">
-          <h3>Missile Base Devínska Kobyla, Slovakia — 1st Prize</h3>
-          <p class="cv-date">2022</p>
-
-          <p>
-            Winning project subsequently exhibited and published in the competition
-            catalogue <em>The Future of the Missile Base at Devínska Kobyla</em>.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Borderless — Ada Zoo, Belgrade</h3>
-          <p class="cv-date">2026</p>
-
-          <p>
-            Exhibited at the 48th Salon of Architecture, Museum of Applied Art,
-            Belgrade.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Rybinsk Reservoir — Collective Site-Specific Project</h3>
-          <p class="cv-date">2021</p>
-
-          <p>
-            Self-organised student initiative combining historical and spatial
-            research with two public site-specific interventions responding to the
-            submerged settlements and transformed landscape of the Rybinsk Reservoir.
-          </p>
-        </article>
-      </section>
-
-      <section class="cv-section">
-        <h2>Selected Publications &amp; Academic Engagement</h2>
-
-        <article class="cv-entry">
-          <p>
-            Panferova, Kseniia. “Typology of Tombstones.” In
-            <em>Science, Education and Experimental Design at MARCHI: Proceedings of
-            the International Scientific and Practical Conference</em>,
-            Moscow Architectural Institute, 2022, pp. 163–164.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <p>
-            Panferova, Kseniia. Illustrations for “Counter-Cartography of Copper,”
-            in <em>Collective Landscape Futures</em>, ed. Anushka Athique,
-            Duncan Goodwin and Ed Wall. Routledge, 2025. Figures 13.4 and 13.9
-            co-authored with Mitesh Dixit.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Guest Lecture on GIS — Syracuse University, School of Architecture</h3>
-          <p class="cv-date">2026</p>
-
-          <p>
-            Introductory session on GIS principles and basic GIS programming for
-            undergraduate architecture students.
-          </p>
-        </article>
-
-        <article class="cv-entry">
-          <h3>Public Lecture — “Barrikadnaya as a Case Study for Architectural Analysis”</h3>
-          <p class="cv-meta">OAO Chteniya, Moscow · 2022</p>
-        </article>
-      </section>
-
-      <section class="cv-section">
-        <h2>Methods &amp; Software</h2>
-
-        <p>
-          Spatial and research methods:
-          GIS, cartography, spatial analysis, field observation, photography,
-          analytical drawing, data analysis
-        </p>
-
-        <p>
-          Software:
-          QGIS, Rhinoceros, Adobe InDesign, Adobe Photoshop, Adobe Illustrator,
-          AutoCAD, Revit, SketchUp
-        </p>
-      </section>
-
-      <section class="cv-section">
-        <h2>Languages</h2>
-
-        <p>
-          Russian — native<br>
-          English — C1<br>
-          Serbian — B1
-        </p>
-      </section>
-
+    <section class="resume-section">
+      <h2 class="resume-section-title">Profile</h2>
+      <p class="resume-profile">
+        Architect based in Belgrade, working across landscape architecture,
+        public space, mapping and spatial research. My current practice combines
+        concept development for public parks in Abu Dhabi with research methods
+        including GIS, cartography, field observation and analytical drawing.
+        I am particularly interested in design processes that begin with a careful
+        reading of territory and translate complex spatial, ecological and social
+        conditions into clear strategies.
+      </p>
     </section>
-  </main>
-</body>
 
+    <section class="resume-section">
+      <h2 class="resume-section-title">Professional Experience</h2>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">ArhinautM — Architectural / Landscape Designer</h3>
+        <p class="resume-meta">February 2024–present</p>
+        <p class="resume-text">
+          Concept development and site analysis for approximately 30 public parks
+          in Abu Dhabi for the Department of Municipalities and Transport (DMT).
+          Preparation and presentation of design proposals, direct client
+          communication, participation in in-person meetings and project visits
+          in Abu Dhabi, and development of internal project workflows.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">DOMAIN Office — Research Analyst</h3>
+        <p class="resume-meta">Belgrade / Bor, Serbia · October 2024–December 2025</p>
+        <p class="resume-text">
+          Research on copper extraction, territorial transformation and planning
+          processes in Bor and Krivelj. Worked with cadastral and spatial-planning
+          data and developed analytical drawings and diagrams. Participated in
+          fieldwork, including community-based research in Krivelj involving
+          interviews, translation and local coordination, photographic
+          documentation, and exhibition and workshop production.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Gran Architectural Studio — Architectural Designer</h3>
+        <p class="resume-meta">May–July 2021</p>
+        <p class="resume-text">
+          Development of a residential complex concept in the Danilovsky Market
+          area, Moscow, including territorial analysis, density calculations,
+          layout development and client coordination.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Buromoscow — Architectural Designer</h3>
+        <p class="resume-meta">August 2019–January 2021</p>
+        <p class="resume-text">
+          Worked on urban design, public space, landscape and residential projects,
+          including competition proposals and detailed design documentation.
+        </p>
+      </article>
+    </section>
+
+    <section class="resume-section">
+      <h2 class="resume-section-title">Selected Projects &amp; Research</h2>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Borderless — Ada Zoo, Belgrade</h3>
+        <p class="resume-meta">Competition proposal with Polina Minina · 2025</p>
+        <p class="resume-text">
+          Co-developed the spatial concept and zoning strategy for the relocation
+          of Belgrade Zoo, exploring ways of reducing the visual presence of
+          enclosures and creating the perception of continuous animal habitats.
+          Exhibited at the 48th Salon of Architecture, Museum of Applied Art,
+          Belgrade, 2026.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">
+          A City Without Borders: Administrative Boundaries and Spatial Identity in Belgrade
+        </h3>
+        <p class="resume-meta">Master’s thesis, University of Belgrade · 2025</p>
+        <p class="resume-text">
+          Investigated the relationship between administrative boundaries,
+          built fabric and lived urban conditions in Belgrade. Combined GIS,
+          demographic and spatial data, satellite imagery and field observation
+          to examine spatial differences obscured by aggregated administrative
+          statistics.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Last Glow — Mapping Italian Coastal Watchtowers</h3>
+        <p class="resume-meta">Reuse Italy competition · 2023</p>
+        <p class="resume-text">
+          Created and geolocated a dataset of approximately 180 coastal
+          watchtowers and developed a Google Maps–QGIS workflow to analyse their
+          territorial distribution as part of the design research.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Contemporary Tombstones: Prototypes and Modes of Interpretation</h3>
+        <p class="resume-meta">Moscow Architectural Institute · 2022</p>
+        <p class="resume-text">
+          Field-based study of funerary architecture in Moscow and St Petersburg.
+          Developed a typology of recurring architectural prototypes and analysed
+          their transformations in contemporary memorial forms.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Reading the Urban Edge through Walking and Photography</h3>
+        <p class="resume-meta">Belgrade · 2026–ongoing</p>
+        <p class="resume-text">
+          Independent photographic fieldwork exploring urban peripheries,
+          terminal bus stops and transitional landscapes through walking,
+          route documentation and field notes.
+        </p>
+      </article>
+    </section>
+
+    <section class="resume-section">
+      <h2 class="resume-section-title">Education</h2>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">University of Belgrade — Faculty of Architecture</h3>
+        <p class="resume-meta">Master of Architecture · 2023–2025</p>
+        <p class="resume-text">
+          <span class="resume-label">Master’s thesis:</span>
+          <em>A City Without Borders: Administrative Boundaries and Spatial Identity in Belgrade</em>
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Moscow Architectural Institute (State Academy)</h3>
+        <p class="resume-meta">Architecture · 2016–2022</p>
+        <p class="resume-text">
+          <span class="resume-label">Thesis:</span>
+          <em>Contemporary Tombstones: Prototypes and Modes of Interpretation</em>
+        </p>
+      </article>
+    </section>
+
+    <section class="resume-section">
+      <h2 class="resume-section-title">Selected Exhibitions &amp; Awards</h2>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Missile Base Devínska Kobyla, Slovakia — 1st Prize</h3>
+        <p class="resume-meta">2022</p>
+        <p class="resume-text">
+          Winning project subsequently exhibited and published in the competition
+          catalogue <em>The Future of the Missile Base at Devínska Kobyla</em>.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Borderless — Ada Zoo, Belgrade</h3>
+        <p class="resume-meta">2026</p>
+        <p class="resume-text">
+          Exhibited at the 48th Salon of Architecture, Museum of Applied Art,
+          Belgrade.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Rybinsk Reservoir — Collective Site-Specific Project</h3>
+        <p class="resume-meta">2021</p>
+        <p class="resume-text">
+          Self-organised student initiative combining historical and spatial
+          research with two public site-specific interventions responding to the
+          submerged settlements and transformed landscape of the Rybinsk Reservoir.
+        </p>
+      </article>
+    </section>
+
+    <section class="resume-section">
+      <h2 class="resume-section-title">Selected Publications &amp; Academic Engagement</h2>
+
+      <article class="resume-entry">
+        <p class="resume-text">
+          Panferova, Kseniia. “Typology of Tombstones.” In
+          <em>Science, Education and Experimental Design at MARCHI: Proceedings of
+          the International Scientific and Practical Conference</em>,
+          Moscow Architectural Institute, 2022, pp. 163–164.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <p class="resume-text">
+          Panferova, Kseniia. Illustrations for “Counter-Cartography of Copper,”
+          in <em>Collective Landscape Futures</em>, ed. Anushka Athique,
+          Duncan Goodwin and Ed Wall. Routledge, 2025. Figures 13.4 and 13.9
+          co-authored with Mitesh Dixit.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Guest Lecture on GIS — Syracuse University, School of Architecture</h3>
+        <p class="resume-meta">2026</p>
+        <p class="resume-text">
+          Introductory session on GIS principles and basic GIS programming for
+          undergraduate architecture students.
+        </p>
+      </article>
+
+      <article class="resume-entry">
+        <h3 class="resume-entry-title">Public Lecture — “Barrikadnaya as a Case Study for Architectural Analysis”</h3>
+        <p class="resume-meta">OAO Chteniya, Moscow · 2022</p>
+      </article>
+    </section>
+
+    <section class="resume-section">
+      <h2 class="resume-section-title">Methods &amp; Software</h2>
+
+      <p class="resume-text">
+        <span class="resume-label">Spatial and research methods:</span>
+        GIS, cartography, spatial analysis, field observation, photography,
+        analytical drawing, data analysis
+      </p>
+
+      <p class="resume-text">
+        <span class="resume-label">Software:</span>
+        QGIS, Rhinoceros, Adobe InDesign, Adobe Photoshop, Adobe Illustrator,
+        AutoCAD, Revit, SketchUp
+      </p>
+    </section>
+
+    <section class="resume-section">
+      <h2 class="resume-section-title">Languages</h2>
+
+      <p class="resume-text">
+        Russian — native<br>
+        English — C1<br>
+        Serbian — B1
+      </p>
+    </section>
+
+  </main>
+
+</body>
 </html>
