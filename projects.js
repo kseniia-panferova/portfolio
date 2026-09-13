@@ -85,4 +85,13 @@ const projects = [
     slug: "2020_W_Fili",
     cover: "assets/img/2020_W_Fili_cover.webp"
   },
+
+
+    {
+    year: 2024,
+    type: "W",
+    title: "Al Taanus Park",
+    slug: "2024_W_Al_Taanus_Park",
+    cover: "assets/img/2024_W_Al_Taanus_Park_cover.webp"
+  },
 ];
