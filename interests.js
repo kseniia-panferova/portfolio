@@ -110,6 +110,7 @@ const interests = [
     size: "large",
     projectSlugs: [
       "2025_C_Borderless"
+      "2020_W_Fili"
     ]
   },
 

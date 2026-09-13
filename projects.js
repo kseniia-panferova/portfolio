@@ -69,11 +69,20 @@ const projects = [
     slug: "2023_A_No_Soup_Exhibition",
     cover: "assets/img/2023_A_No_Soup_Exhibition-cover.webp"
   },
-      {
+
+   {
     year: 2025,
     type: "C",
     title: "Borderless",
     slug: "2025_C_Borderless",
     cover: "assets/img/2025_C_Borderless-cover.webp"
+  },
+
+     {
+    year: 2020,
+    type: "W",
+    title: "Fili Landscape",
+    slug: "2020_W_Fili",
+    cover: "assets/img/2020_W_Fili_cover.webp"
   },
 ];
